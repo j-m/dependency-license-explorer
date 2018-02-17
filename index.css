@@ -1,0 +1,85 @@
+body {
+	margin:0;
+	background:#eee;
+	font-family:Arial;
+}
+/*Make each tier one line & start from left*/
+.dependencies {
+	position:absolute;
+	left:0;
+	display: none;
+	width:max-content;
+}
+
+/*Hide the radio inputs*/
+input[type="radio"]{
+	display:none;
+	position:absolute;
+}
+
+/*Highlight current directory*/
+input[type="radio"]:checked + .item{
+	background:#eaeaea;
+}
+
+/*Put all items (for that tier) on one line*/
+label{
+	display: inline-block;
+}
+
+/*Show the next tier*/
+body > .dependencies,
+input[type="radio"]:checked ~ .dependencies{
+	display:block;
+}
+
+/*Make module names span one line*/
+.item{
+	width:min-content;
+}
+
+/*Vertical lines*/
+.item::before,
+input[type="radio"]:checked + .item::after{
+	content:" ";
+	display:block;
+	background:#333;
+	height:2rem;
+	width:2px;
+    position: relative;
+    left: 50%;
+}
+.item::before{
+	top:0;
+}
+.item::after{
+	bottom:0;
+}
+/*Horizontal lines*/
+.dependencies{
+	border-top: 2px solid #333;
+}
+.dependency:only-child{
+	border-top:0; 	
+}
+/*Content styling*/
+.item *{
+	margin:0;
+}
+.content{
+	background:#fff;
+	padding:1.2rem 2rem .5rem 2rem;
+	border:1px solid #ddd;
+	border-radius:.3rem;
+	display:inline-block;
+	margin:0 2rem;
+	white-space:nowrap;
+	text-align:center;
+}
+.content p{
+	font-size:1.2rem;
+	font-weight:bold;
+}
+.content a{
+	font-size:.8rem;
+}
