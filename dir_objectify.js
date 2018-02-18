@@ -35,7 +35,8 @@ function objectify_artefacts(artefacts){
 	for (var i = 1; i < artefacts.length; ++i){
 		var depth = (/[^\w]*/.exec(artefacts[i])[0].length)/3;
 		var cut = /[^\w]*/.exec(artefacts[i])[0];
-		var GAV = artefacts[i].replace(cut,'');
+		var vGAV = artefacts[i].replace(cut,'');
+		var GAV = /[^:]*:[^:]*/.exec(vGAV);
 		if (depth == 1) {
 			dir_depth = 1;
 			var new_artefact = {GAV: GAV, children: [], parent: dir_objs[0], depth: 1};
@@ -70,4 +71,4 @@ function objectify_artefacts(artefacts){
 }
 
 
-read_txt("tree.txt");
+read_txt("../projects/Project-A/tree.txt");
