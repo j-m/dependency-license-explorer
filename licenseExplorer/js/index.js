@@ -1,25 +1,33 @@
-var dependencies = [], tree = {};
-function getCurrent(tree, indexes){
-	currentItem = tree;
-	for(var index = 0; index < indexes.length; index++)
-		currentItem = currentItem.children[index];
-	return currentItem;
+var dependencies = [], tree = {info: {}, children: []};
+function addChild(indexes, info){
+	var currentItem = tree;
+	for(var index = 0; index < indexes.length-1; index++)
+		currentItem = currentItem.children[indexes[index]];
+	console.log(indexes);
+	currentItem.children.push({info:info, children:[]});
 }
 function processTree(file){
 	var lines = file.content.split('\n'),
-		lines = lines.filter((line)=>line.length>0),
-		info = findDependency(lines[0]);
-	tree = {license: info.license, name: info.name,GAV: lines[0], children: []};
-	var indexes = [];
-	for(var index = 1; index < lines.length; index++){
-		var currentParent = getCurrent(tree,indexes),
-			depth = (/[^\w]*/.exec(lines[index])[0].length)/3,
+		lines = lines.filter((line)=>line.length>0);
+	var indexes = [], prevDepth = 0;
+	for(var index = 0; index < lines.length; index++){
+		var depth = (/[^\w]*/.exec(lines[index])[0].length)/3,
 			cut = /[^\w]*/.exec(lines[index])[0],
-		currentParent.children.push({GAV:lines[index].replace(cut,''), children:[]});
+			vGAV = lines[index].replace(cut,''),
+			GAV = /[^:]*:[^:]*/.exec(vGAV),
+			info = findDependency(GAV);
+		addChild(indexes, info);
+		for(var popNamount = 0; popNamount < prevDepth-depth; popNamount++)
+			indexes.pop();
+		indexes[depth]++;
+		if(!indexes[depth]) indexes[depth]=0;
+		prevDepth = depth;
+		
 	}
+	console.log(tree);
 }
 function findDependency(GAV){
-	
+	return {license: "Apache 2.0", name: "Module x", gav: GAV};
 }
 function process3P(file){
 	var lines = file.content.split('\n'),
