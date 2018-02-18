@@ -7,10 +7,10 @@ Generated display is HTML/CSS only; any system with an internet browser will sup
 **No 3rd party assets** have been, or will be, used.
 
 - [x] HTML/CSS only tree-structure view
-- [ ] Display/edit dependency details
-- [ ] Export JSON
-- [ ] Generate `HTML` from `JSON`
 - [x] Warning (missing license) and error (blacklisted license) paths
+- [ ] Display/edit dependency details
+- [ ] Export data (`JSON`)
+- [ ] Generate `HTML` from `JSON`
 - [ ] Allow overwriting of module licenses
 - [ ] Allow aliases/synonyms of licenses
 - [ ] Whitelist/blacklist license customisation
