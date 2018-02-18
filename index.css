@@ -1,85 +1,136 @@
 body {
-	margin:0;
+	margin:1px;
 	background:#eee;
 	font-family:Arial;
 }
-/*Make each tier one line & start from left*/
 .dependencies {
+	display: none;
 	position:absolute;
 	left:0;
-	display: none;
-	width:max-content;
 }
-
 /*Hide the radio inputs*/
 input[type="radio"]{
 	display:none;
 	position:absolute;
 }
 
-/*Highlight current directory*/
-input[type="radio"]:checked + .item{
-	background:#eaeaea;
-}
-
-/*Put all items (for that tier) on one line*/
-label{
-	display: inline-block;
-}
-
 /*Show the next tier*/
 body > .dependencies,
 input[type="radio"]:checked ~ .dependencies{
-	display:block;
+	display:flex;
 }
-
-/*Make module names span one line*/
-.item{
-	width:min-content;
-}
-
 /*Vertical lines*/
-.item::before,
+.item::before,.item::after{
+	content:" ";
+	display:block;
+	background:#333;
+    position: relative;
+    left: 4rem;
+}
+.item::before{
+	top:0;
+	height:2rem;
+	width:2px;
+}
+input[type="radio"]:checked + .item::before{
+	top:0;
+	height:8rem;
+	width:2px;
+}
 input[type="radio"]:checked + .item::after{
 	content:" ";
 	display:block;
 	background:#333;
-	height:2rem;
-	width:2px;
+    position: absolute;
+	margin-bottom:2rem;
+	bottom:-2rem;
+	width:2rem;
+	height:2px;
+	right:50%;
+}
+/*Horizontal Lines*/
+.dependency:not(:first-of-type):not(:last-of-type)::before,
+.dependency:first-of-type::before,
+.dependency:last-of-type::before {
+    content: " ";
     position: relative;
-    left: 50%;
+    top: 0;
+    height: 2px;
+    background-color: #333;
+	display:block;
+	margin-top: -2px;
+	width:4rem;
 }
-.item::before{
-	top:0;
+.dependency:not(:first-of-type):not(:last-of-type)::before{
+	width:100%;
 }
-.item::after{
-	bottom:0;
+.dependency:first-of-type::before{
+    left: 4rem;
+	width:calc(100% - 4rem)
 }
-/*Horizontal lines*/
-.dependencies{
-	border-top: 2px solid #333;
+.dependency:last-of-type::before{
+    left: 0;
+	padding-right:2px;
 }
-.dependency:only-child{
-	border-top:0; 	
+.dependency:only-child::before{
+	display:none;
 }
 /*Content styling*/
 .item *{
 	margin:0;
 }
+input[type="radio"]:checked + .item .content{
+	position: relative;
+    top: -6rem;
+    height: 2rem;
+}
+.item{
+	height:8rem;
+}
+
+input[type="radio"]:checked + .item .content p,  
+.item:hover .content p{
+	max-width:20rem;
+}
+.content p {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	max-width:10rem;
+	transition: max-width .25s;
+}
 .content{
-	background:#fff;
+	background:#aaa;
 	padding:1.2rem 2rem .5rem 2rem;
-	border:1px solid #ddd;
+	border-bottom:.2rem solid #888;
 	border-radius:.3rem;
 	display:inline-block;
-	margin:0 2rem;
+	margin:0 1rem;
 	white-space:nowrap;
 	text-align:center;
+	text-shadow: -1px -1px 2px rgba(0,0,0,0.2);
+	
+
 }
-.content p{
-	font-size:1.2rem;
+	/*Highlight current directory*/
+	input[type="radio"]:checked + .item .content {
+		background: #fff;
+		border-bottom-color: #ddd;
+	}
+.content.invalid{
+	background:red;
+	border-bottom-color:#c80000;
+	color:white;
+	
+}
+.content p:nth-of-type(1){
+	font-size:1rem;
 	font-weight:bold;
 }
-.content a{
+.content p:nth-of-type(2){
 	font-size:.8rem;
+}
+.content p:nth-of-type(2):hover{
+	text-decoration:underline;
+	cursor:pointer;
 }
