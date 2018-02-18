@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>OpenSource License Explorer</title>
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<link rel="stylesheet" type="text/css" href="css/tree.css"/>
+	</head>
+	<body>
+		<form>
+			<p>Find these files(* required)</p>
+			<label>*THIRD-PARTY.txt</label>
+			<label>*tree.txt</label>
+			<label>whitelist.txt</label>
+			<label>synonyms.txt</label>
+			<label>override.txt</label>
+			<input type="file" id="files" name="files[]" multiple required/>
+			
+			<input type="submit"/>
+		</form>
+		<pre id="file-content"></pre>
+		<script type="text/javascript" src="js/index.js"></script>
+	</body>
+</html>

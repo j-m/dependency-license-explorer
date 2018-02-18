@@ -5,7 +5,7 @@ body {
 	height:min-content;
 }
 .overlay{
-	display:block;
+	display:none;
 	position:absolute;
 	z-index:99;
 	background:rgba(0,0,0,0.5);
@@ -28,12 +28,17 @@ body {
 .popup label,
 .popup input{
 	display:block;
-	width:20rem;
+	width:35rem;
 	margin: .5rem 0;
 }
 .popup input{
 	position:relative;
 	z-index:3;
-	margin-bottom:2rem;
 	padding: .5rem 1rem;
+	background: #efefef;
+    border: 2px inset;
+}
+.popup button{
+	color:white;
+	
 }

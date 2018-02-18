@@ -2,8 +2,8 @@
 <html>
 	<head>
 		<title>OpenSource License Explorer</title>
-		<link rel="stylesheet" type="text/css" href="index.css"/>
-		<link rel="stylesheet" type="text/css" href="tree.css"/>
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<link rel="stylesheet" type="text/css" href="css/tree.css"/>
 	</head>
 	<body>
 		<div class="overlay">
@@ -26,7 +26,7 @@
 					</div>
 					<div class="content">
 						<p>Root</p>
-						<p>More info...</p>
+						<a href="#" onclick="show([0])">More info...</a>
 					</div>
 				</div>
 				<div class="dependencies">
@@ -38,7 +38,7 @@
 							</div>
 							<div class="content">
 								<p>Module 1 has a longer name than usual</p>
-								<p>More info...</p>
+								<a href="#" onclick="show([0,0])">More info...</a>
 							</div>
 						</div>
 						<div class="dependencies">
@@ -46,7 +46,7 @@
 								<div class="item">
 									<div class="content">
 										<p>Module 1.1</p>
-										<p>More info...</p>
+										<a href="#" onclick="show([0,0,0])">More info...</a>
 									</div>
 								</div>
 							</label>
@@ -58,7 +58,7 @@
 									</div>
 									<div class="content">
 										<p>Module 1.2</p>
-										<p>More info...</p>
+										<a href="#" onclick="show([0,0,1])">More info...</a>
 									</div>
 								</div>
 								<div class="dependencies">
@@ -66,7 +66,7 @@
 										<div class="item">
 											<div class="content missing">
 												<p>Module 1.2.1</p>
-												<p>More info...</p>
+												<a href="#" onclick="show([0,0,1,0])">More info...</a>
 											</div>
 										</div>				
 									</label>
@@ -78,7 +78,7 @@
 						<div class="item">
 							<div class="content">
 								<p>Module 2</p>
-								<p>More info...</p>
+								<a href="#" onclick="show([0,1])">More info...</a>
 							</div>
 						</div>
 					</label>
@@ -90,7 +90,7 @@
 							</div>
 							<div class="content">
 								<p>Module 3</p>
-								<p>More info...</p>
+								<a href="#" onclick="show([0,2])">More info...</a>
 							</div>
 						</div>
 						<div class="dependencies">
@@ -98,7 +98,7 @@
 								<div class="item">
 									<div class="content">
 										<p>Module 3.1</p>
-										<p>More info...</p>
+										<a href="#" onclick="show([0,2,0])">More info...</a>
 									</div>
 								</div>
 							</label>
@@ -106,7 +106,7 @@
 								<div class="item">
 									<div class="content">
 										<p>Module 3.2</p>
-										<p>More info...</p>
+										<a href="#" onclick="show([0,2,1])">More info...</a>
 									</div>
 								</div>
 							</label>
@@ -118,7 +118,7 @@
 									</div>
 									<div class="content">
 										<p>Module 3.3</p>
-										<p>More info...</p>
+										<a href="#" onclick="show([0,2,2])">More info...</a>
 									</div>
 								</div>
 								<div class="dependencies">
@@ -126,7 +126,7 @@
 										<div class="item">
 											<div class="content conflict">
 												<p>Module 3.3.1</p>
-												<p>More info...</p>
+												<a href="#" onclick="show([0,2,2,0])">More info...</a>
 											</div>
 										</div>
 									</label>
@@ -137,6 +137,6 @@
 				</div>
 			</label>
 		</div>
-		<script type="text/javascript" src="index.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
 	</body>
 </html>

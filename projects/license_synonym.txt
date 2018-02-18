@@ -1,0 +1,16 @@
+{
+  _id: "The Apache Software License, Version 2.0",
+  "synonyms": [
+    "Apache 2",
+    "Apache 2.0",
+    "Apache License, Version 2.0",
+    "Apache License"
+  ]
+}
+{
+  _id: "GNU Lesser General Public Licence",
+  "synonyms": [
+    "LGPL",
+    "L-GPL"
+  ]
+}

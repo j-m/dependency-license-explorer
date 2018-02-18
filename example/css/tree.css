@@ -49,21 +49,25 @@ input[type="radio"]:not(:checked) ~ .dependencies{
 		border-bottom:.2rem solid #eaeaea;
 	}
 	/*Stylise text*/
-	.content p {
+	.content * {
 		overflow: hidden;
 		white-space: nowrap;
 		text-overflow: ellipsis;
 		max-width:10rem;
 		margin:0;
 	}
-	.content p:nth-of-type(1){
+	.content *:nth-child(1){
 		font-size:1rem;
 		font-weight:bold;
 	}
-	.content p:nth-of-type(2){
+	.content *:nth-child(2){
 		font-size:.8rem;
+		text-decoration:none;
 	}
-	.content p:nth-of-type(2):hover{
+	.content *:nth-child(2):active{
+		color:black;
+	}
+	.content *:nth-child(2):hover{
 		text-decoration:underline;
 		cursor:pointer;
 	}
@@ -73,6 +77,7 @@ input[type="radio"]:not(:checked) ~ .dependencies{
 		border-bottom-color:#c80000;
 		color:white;
 	}
+	
 	/*Highlight missing licenses*/
 	.missing{
 		background:#ffbc00;
@@ -83,6 +88,7 @@ input[type="radio"]:not(:checked) ~ .dependencies{
 .item{
 	position:relative;
 	padding:1rem 2rem;
+	height:4rem;
 }
 .item::before,
 input[type="radio"]:checked + .item::after {
@@ -120,10 +126,17 @@ input[type="radio"]:checked + .item::after {
     width: 2px;
     background: #aaa;
 }
+/*icons*/
+.icons{
+	position:absolute;
+	z-index:3;
+	right:2.1rem;
+}
+.icons *{display:inline;}
 /*.warnings*/
 .warnings::after{
 	content:" ";
-	background:url("warning.svg");
+	background:url("../img/warning.svg");
 	display: inline-block;
 	width:1rem;
 	height:1rem;
@@ -133,16 +146,10 @@ input[type="radio"]:checked + .item::after {
 /*.conflicts*/
 .conflicts::after{
 	content:" ";
-	background:url("error.svg");
+	background:url("../img/error.svg");
 	display: inline-block;
 	width:1rem;
 	height:1rem;
 	vertical-align:text-bottom;
 	background-repeat:no-repeat;
 }
-.icons{
-	position:absolute;
-	z-index:3;
-	right:2.1rem;
-}
-.icons *{display:inline;}

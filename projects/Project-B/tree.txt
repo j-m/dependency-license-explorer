@@ -1,0 +1,94 @@
+com.pcmsgroup.v21.dfm.messagestore:dfm-messagestore-war:war:3.4.0-SNAPSHOT
++- com.pcmsgroup.v21.dfm.common:dfm-common:jar:3.4.0-SNAPSHOT:compile
+|  +- com.pcmsgroup.v21.esi:esi-deviceservice-api:jar:2.20.0:compile
+|  |  +- com.pcmsgroup.v21.esi:esi-deviceservice-jaxb-stubs:jar:2.20.0:compile
+|  |  +- com.pcmsgroup.v21.esi:arts-common-jaxb-helper:jar:2.20.0:compile
+|  |  |  +- commons-beanutils:commons-beanutils:jar:1.8.3:compile (version managed from 1.9.2)
+|  |  |  +- com.pcmsgroup.v21.esi:pcms-poslogextensions-jaxb-stubs:jar:2.20.0:compile
+|  |  |  |  \- com.pcmsgroup.v21.esi:arts-poslog-jaxb-stubs:jar:2.20.0:compile
+|  |  |  +- com.pcmsgroup.v21.esi:esi-header-model:jar:2.20.0:compile
+|  |  |  |  \- com.pcmsgroup.v21.esi:arts-common-jaxb-stubs:jar:2.20.0:compile
+|  |  |  +- org.apache.cxf:cxf-api:jar:2.7.7:compile
+|  |  |  |  +- org.codehaus.woodstox:woodstox-core-asl:jar:4.2.0:compile
+|  |  |  |  |  \- org.codehaus.woodstox:stax2-api:jar:3.1.1:compile
+|  |  |  |  +- org.apache.ws.xmlschema:xmlschema-core:jar:2.0.3:compile
+|  |  |  |  +- org.apache.geronimo.specs:geronimo-javamail_1.4_spec:jar:1.7.1:compile
+|  |  |  |  \- wsdl4j:wsdl4j:jar:1.6.3:compile
+|  |  |  +- org.apache.cxf:cxf-rt-core:jar:2.7.7:compile
+|  |  |  |  \- com.sun.xml.bind:jaxb-impl:jar:2.1.13:compile
+|  |  |  \- org.apache.cxf:cxf-rt-frontend-jaxrs:jar:2.7.14:compile (version managed from 2.7.7)
+|  |  |     +- org.apache.cxf:cxf-rt-bindings-xml:jar:2.7.14:compile
+|  |  |     \- org.apache.cxf:cxf-rt-transports-http:jar:2.7.14:compile
+|  |  +- javax.ws.rs:javax.ws.rs-api:jar:2.0.1:compile
+|  |  +- com.pcmsgroup.v21.data:schema-constants:jar:1.12.0:compile
+|  |  +- joda-time:joda-time:jar:2.3:compile
+|  |  \- com.google.guava:guava:jar:14.0.1:compile
+|  +- com.pcmsgroup.v21.esi:esi-corporateservice-api:jar:2.20.0:compile
+|  |  +- com.pcmsgroup.v21.data.legacy:v21xsd:jar:3.102.3.20160518:compile
+|  |  \- com.pcmsgroup.v21.esi:esi-corporateservice-jaxb-stubs:jar:2.20.0:compile
+|  +- org.springframework:spring-beans:jar:3.2.13.RELEASE:compile
+|  \- commons-lang:commons-lang:jar:2.6:compile
++- com.pcmsgroup.v21.dfm.messagestore:dfm-messagestore-api:jar:3.4.0-SNAPSHOT:compile
+|  +- commons-dbcp:commons-dbcp:jar:1.4:compile
+|  |  \- commons-pool:commons-pool:jar:1.5.7:compile (version managed from 1.5.4)
+|  +- org.springframework:spring-context:jar:3.2.13.RELEASE:compile
+|  +- org.aspectj:aspectjrt:jar:1.7.2:compile
+|  +- cglib:cglib:jar:2.2:compile
+|  |  \- asm:asm:jar:3.1:compile
+|  +- org.aspectj:aspectjweaver:jar:1.7.2:compile
+|  +- org.mybatis:mybatis:jar:3.2.3:compile
+|  +- org.mybatis:mybatis-spring:jar:1.2.1:compile
+|  +- org.springframework:spring-jdbc:jar:3.2.13.RELEASE:compile
+|  \- org.springframework:spring-tx:jar:3.2.13.RELEASE:compile
++- com.pcmsgroup.v21.dfm.messagestore:dfm-messagestore-da-mongo-impl:jar:3.4.0-SNAPSHOT:compile
+|  \- com.pcmsgroup.v21.dfm.messagestore:dfm-messagestore-da-api:jar:3.4.0-SNAPSHOT:compile
++- com.pcmsgroup.v21.dfm.messagestore:dfm-messagestore-impl:jar:3.4.0-SNAPSHOT:compile
++- org.codehaus.jackson:jackson-jaxrs:jar:1.9.13:compile
+|  +- org.codehaus.jackson:jackson-core-asl:jar:1.9.13:compile
+|  \- org.codehaus.jackson:jackson-mapper-asl:jar:1.9.13:compile
++- org.primefaces:primefaces:jar:5.3:compile
++- org.primefaces.extensions:primefaces-extensions:jar:3.2.0:compile
+|  \- org.apache.commons:commons-lang3:jar:3.1:compile
++- com.pcmsgroup.v21.esi:esi-common:jar:2.12.0:compile
+|  +- com.pcmsgroup.v21.esi:pcmsenvelope-jaxb-stubs:jar:2.10.0:compile
+|  |  \- org.jvnet.jaxb2_commons:jaxb2-basics-runtime:jar:0.6.4:compile
+|  +- org.springframework:spring-jms:jar:3.2.13.RELEASE:compile
+|  \- org.slf4j:jcl-over-slf4j:jar:1.7.2:compile
++- com.sun.faces:jsf-api:jar:2.2.6:compile
++- com.sun.faces:jsf-impl:jar:2.2.6:compile
++- javax.servlet:jstl:jar:1.2:compile
++- javax.servlet:servlet-api:jar:2.5:provided
++- javax.servlet.jsp:jsp-api:jar:2.1:provided
++- org.slf4j:slf4j-log4j12:jar:1.7.2:compile
+|  \- log4j:log4j:jar:1.2.17:compile
++- org.slf4j:slf4j-api:jar:1.7.2:compile
++- org.springframework:spring-webmvc:jar:3.2.13.RELEASE:compile
+|  +- org.springframework:spring-core:jar:3.2.13.RELEASE:compile
+|  \- org.springframework:spring-expression:jar:3.2.13.RELEASE:compile
++- javax.jms:jms-api:jar:1.1-rev-1:provided
++- javax.inject:javax.inject:jar:1:compile
++- commons-io:commons-io:jar:2.4:compile
++- org.mongodb:mongo-java-driver:jar:2.12.5:compile
++- org.springframework.data:spring-data-mongodb:jar:1.5.5.RELEASE:compile
+|  \- org.springframework.data:spring-data-commons:jar:1.8.5.RELEASE:compile
++- org.apache.httpcomponents:fluent-hc:jar:4.5:compile
+|  \- org.apache.httpcomponents:httpclient:jar:4.5:compile
+|     +- org.apache.httpcomponents:httpcore:jar:4.4.1:compile
+|     \- commons-codec:commons-codec:jar:1.9:compile
++- org.tuckey:urlrewritefilter:jar:4.0.4:compile
++- com.google.code.gson:gson:jar:2.3.1:compile
++- com.pcmsgroup.test.util:concordion-extension:jar:1.0.1:test
+|  +- org.concordion:concordion:jar:1.4.3:test
+|  |  +- ognl:ognl:jar:2.6.9:test
+|  |  \- xom:xom:jar:1.2.5:test
+|  |     \- xml-apis:xml-apis:jar:1.4.01:test (version managed from 1.3.03)
+|  \- xmlunit:xmlunit:jar:1.4:test
++- com.pcmsgroup.v21.dfm.common:dfm-common:test-jar:tests:3.4.0-SNAPSHOT:test
++- org.springframework:spring-test:jar:3.2.13.RELEASE:test
++- junit:junit:jar:4.11:test
+|  \- org.hamcrest:hamcrest-core:jar:1.3:test
++- org.mockito:mockito-all:jar:1.9.0:test
++- org.springframework:spring-web:jar:3.2.13.RELEASE:compile
+|  \- org.springframework:spring-aop:jar:3.2.13.RELEASE:compile
+|     \- aopalliance:aopalliance:jar:1.0:compile
+\- com.caucho:hessian:jar:4.0.38:compile
