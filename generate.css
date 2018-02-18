@@ -1,0 +1,26 @@
+body {
+	margin:1px;
+	background:#eee;
+	font-family:Arial;
+	height:min-content;
+}
+form{
+	width:min-content;
+	padding:1rem;
+	background:#fff;
+}
+form *{
+	display:block;
+}
+form input{
+	margin-bottom:1rem;
+	padding:.5rem 0;
+}
+form input:requried::before{
+	content:"*";
+	color:red;
+}
+form input[type="submit"]{
+	width:100%;
+	margin-bottom:0;
+}
