@@ -6,7 +6,7 @@ textArray("THIRD-PARTY.txt");
 to modify the thirdPartyJSON into a string list of objects containing "Lincence", "Dependency name" & "GAV".
 
 */
-
+textArray("THIRD-PARTY.txt")
 function textArray (url){
 	var xmlhttp = new XMLHttpRequest();
 	//var url = "THIRD-PARTY.txt";
@@ -43,9 +43,9 @@ function LNVJSON (array) {
 		var name = s.split(/[()]/)[2].trim();
 		var GAV = s.split(/[()]/)[3];
 
-		obj["License"] = lic;
-		obj["Dependency name"] = name;
-		obj["GAV"] = GAV;
+		obj.License = lic;
+		obj.Dependency_name = name;
+		obj.GAV = GAV;
 		dependencies.push(obj);
 		//console.log(obj);
 
