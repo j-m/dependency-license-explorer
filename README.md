@@ -1,12 +1,17 @@
-# Attempt at a licence viewer,
+# Dependency License Explorer
+Given dependency information, this Open Source software generates a tree-based view of the dependicies of a project. 
+Per dependency it requires: license information, name, and GAV. It also requires a tree-structure of the dependencies. *(Refer to the example projects for more details.)* These were generated in Maven; you do not have to create these yourself. **Support for other project types is planned.** (It is fairly easy to match this style, but we wish to automate it.)
 
-## What we have:
+Generated display is HTML/CSS only; any system with an internet browser will support this - we recommend **Google Chrome**. To edit/view more detailed dependency information, as well as generating displays in the first place, requires only vanilla JavaScript. 
 
-    + HTML & CSS formatted to view the nested dependency structure.
-    + A script to export locally cloned maven output as JSON, dir_objectify.js
-    + JavaScript to parse the third-party dependencies text file into JSON.
+**No 3rd party assets** have been, or will be, used.
 
-## To-dos:
-
-    - Integrate so HTML/CSS is automatically generated from local txt files( maven output )
-    - Ability to use aliases/synonyms, blacklist and whitelisting different licenses 
+- [x] HTML/CSS only tree-structure view
+- [x] Parse `.txt` to `JSON`
+- [ ] Export JSON
+- [ ] Generate `HTML` from `JSON`
+- [x] Warning and error paths
+- [ ] Allow overwriting of module licenses
+- [ ] Allow aliases/synonyms of licenses
+- [ ] Whitelist/blacklist license customisation
+- [ ] Project overview/summary
