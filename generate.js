@@ -18,8 +18,7 @@ return
 </label>`
 }
 function generate(){
-	var el = document.createElement("dummy");
-    el.innerHTML= 
+	var data =
 `<!DOCTYPE html>
 <html>
 	<head>
@@ -49,10 +48,24 @@ function generate(){
 		<script type="text/javascript" src="common/index.js"></script>
 	</body>
 </html>`	
-	var link = document.createElement("a");
-    link.download = "generated.html";
-    link.href = "data:text/plain," + el.innerHTML;
-    link.click();
+	download(data, 'generated.html','html');
+}
+function download(data, filename, type) {
+    var file = new Blob([data], {type: type});
+    if (window.navigator.msSaveOrOpenBlob) // IE10+
+        window.navigator.msSaveOrOpenBlob(file, filename);
+    else { // Others
+        var a = document.createElement("a"),
+                url = URL.createObjectURL(file);
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(function() {
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);  
+        }, 0); 
+    }
 }
 function addChild(indexes, info){
 	var currentItem = tree;
