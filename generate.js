@@ -19,11 +19,16 @@ return
 }
 function generate(){
 	var el = document.createElement("dummy");
-    el.innerText= 
+    el.innerHTML= 
 `<!DOCTYPE html>
 <html>
 	<head>
-		<title>OpenSource License Explorer</title>
+		<meta charset="UTF-8">
+		<meta name="description" content="Dependency License Explorer">
+		<meta name="keywords" content="HTML,CSS,JavaScript,License,Dependency">
+		<meta name="author" content="Jonathan Marsh, Charlie Parker">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Dependency License Explorer</title>
 		<link rel="stylesheet" type="text/css" href="common/index.css"/>
 		<link rel="stylesheet" type="text/css" href="common/tree.css"/>
 	</head>
@@ -45,8 +50,8 @@ function generate(){
 	</body>
 </html>`	
 	var link = document.createElement("a");
-    link.download = "generated";
-    link.href = "data:html/plain," + el.innerHTML;
+    link.download = "generated.html";
+    link.href = "data:text/plain," + el.innerHTML;
     link.click();
 }
 function addChild(indexes, info){
