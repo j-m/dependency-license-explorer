@@ -17,38 +17,8 @@ return
 	</div>
 </label>`
 }
-function generate(){
-	var data =
-`<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="description" content="Dependency License Explorer">
-		<meta name="keywords" content="HTML,CSS,JavaScript,License,Dependency">
-		<meta name="author" content="Jonathan Marsh, Charlie Parker">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Dependency License Explorer</title>
-		<link rel="stylesheet" type="text/css" href="common/index.css"/>
-		<link rel="stylesheet" type="text/css" href="common/tree.css"/>
-	</head>
-	<body>
-		<div class="overlay">
-			<div class="popup">
-				<label>Module name:</label>
-				<input type="text" placeholder="Name"/>
-				<label>Module package:</label>
-				<input type="text" placeholder="Package"/>
-				<label>Module license:</label>
-				<input type="text" placeholder="License"/>	
-			</div>
-		</div>
-		<div class="dependencies">
-
-		</div>
-		<script type="text/javascript" src="common/index.js"></script>
-	</body>
-</html>`	
-	download(data, 'generated.html','html');
+function generate(combine){
+	download((combine)?allinone:separate, 'generated.html','html');
 }
 function download(data, filename, type) {
     var file = new Blob([data], {type: type});
@@ -116,13 +86,13 @@ function process3rdParty(file){
 	}
 	console.log(dependencies);	
 }
-function process(files){
+function process(files,combine){
 	for(var index = 0; index < files.length; index++){
 		if(files[index].name == "THIRD-PARTY.txt")
 			process3rdParty(files[index]);
 		if(files[index].name == "tree.txt")
 			processTree(files[index]);
-		generate();
+		generate(combine);
 	}
 }
 function read(e){
@@ -130,7 +100,8 @@ function read(e){
 	if(document.getElementById('files').files.length > 2)
 		return;
 	var files = [],
-		group =  document.getElementById('files').files;
+		group =  document.getElementById('files').files,
+		combine = document.getElementById('combined').checked;
 	document.getElementsByTagName('body')[0].innerHTML = "";
 	for(var index = 0; index < group.length; index++){
 		var reader = new FileReader();
@@ -138,7 +109,7 @@ function read(e){
 		reader.onload = function(e2) {
 			files.push({name:this.name,content:e2.currentTarget.result});
 			if(files.length >= 2)
-				process(files);
+				process(files,combine);
 		};
 		reader.readAsText(group[index]);
 	}

@@ -13,9 +13,12 @@
 			<label>synonyms.txt</label>
 			<label>override.txt</label>
 			<input type="file" id="files" name="files[]" multiple required/>
+			<label>If you wish to have all the CSS, SVGs, and JavaScript all in one document keep the following checked. Otherwise move the generated file(s) to the same directory as 'common'.</label>
+			<input type="checkbox" id="combined" name="combined" checked/>
 			<input type="submit"/>
 		</form>
 		<p>Once complete, move the download(s) into the "output" folder and then view it.</p>
+		<script type="text/javascript" src="template.js"></script>
 		<script type="text/javascript" src="generate.js"></script>
 	</body>
 </html>
