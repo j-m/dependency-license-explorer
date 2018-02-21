@@ -6,18 +6,55 @@
 	</head>
 	<body>
 		<form>
-			<p>Find these files(* required)</p>
-			<label>*THIRD-PARTY.txt</label>
-			<label>*tree.txt</label>
-			<label>whitelist.txt</label>
-			<label>synonyms.txt</label>
-			<label>override.txt</label>
-			<input type="file" id="files" name="files[]" multiple required/>
-			<label>If you wish to have all the CSS, SVGs, and JavaScript all in one document keep the following checked. Otherwise move the generated file(s) to the same directory as 'common'.</label>
-			<input type="checkbox" id="combined" name="combined" checked/>
-			<input type="submit"/>
+			<fieldset>
+				<legend>File selection (*required)</legend>
+				<label>
+					<p required>THIRD-PARTY.txt</p>
+					<p required>tree.txt</p>
+					<p>whitelist.txt</p>
+					<p>synonyms.txt</p>
+					<p>override.txt</p>
+					<input type="file" id="files" name="files[]" multiple required/>
+				</label>
+			</fieldset>
+			<fieldset>
+				<legend>File customisation</legend>
+				<label>
+					Create all-in-one document 
+					<input type="radio" name="generation" checked/>
+					<p class="hint">Makes the document more portable; no external dependencies</p>
+				</label>
+				<label>
+					Create dependent document 
+					<input type="radio" name="generation"/>
+					<p class="hint">Move the generated file(s) into the `output` folder</p>
+				</label>
+				<label>
+					Create HTML/CSS only document 
+					<input type="radio" name="generation"/>
+					<p class="hint">Tree exploration only; cannot edit or view details</p>
+				</label>
+				<label>
+					Re-name
+					<input type="text" name="name" placeholder="generated"/>
+					<p class="hint">Customise download name</p>
+				</label>
+			</fieldset>
+			<fieldset>
+				<legend>Additional downloads</legend>
+				<label>
+					Log output to file 
+					<input type="checkbox" id="log" name="log"/>
+					<p class="hint">Output is logged to console anyway</p>
+				</label>
+				<label>
+					Save JSON
+					<input type="checkbox" id="log" name="log" checked/>
+					<p class="hint">Required for detail viewing & modification if not all-in-one</p>
+				</label>
+			</fieldset>
+			<input type="submit" value="Generate"/>
 		</form>
-		<p>Once complete, move the download(s) into the "output" folder and then view it.</p>
 		<script type="text/javascript" src="template.js"></script>
 		<script type="text/javascript" src="generate.js"></script>
 	</body>

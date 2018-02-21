@@ -1,4 +1,4 @@
-var allinone = `
+function allinone(dependencies){return `
 <!DOCTYPE html>
 <html>
 	<head>
@@ -220,8 +220,8 @@ var allinone = `
 				<input type="text" placeholder="License"/>	
 			</div>
 		</div>
-		<div class="dependencies" id="root">
-
+		<div class="dependencies">
+			${dependencies}
 		</div>
 		<script type="text/javascript">
 		function show(ignore){
@@ -230,7 +230,8 @@ var allinone = `
 		</script>
 	</body>
 </html>
-`, separate = `
+`;}
+function separate(dependencies){return`
 <!DOCTYPE html>
 <html>
 	<head>
@@ -249,9 +250,10 @@ var allinone = `
 				<input type="text" placeholder="License"/>	
 			</div>
 		</div>
-		<div class="dependencies" id="root">
+		<div class="dependencies">
+			${dependencies}
 		</div>
 		<script type="text/javascript" src="common/index.js"></script>
 	</body>
 </html>
-`;
+`;}

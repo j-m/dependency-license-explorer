@@ -1,47 +1,50 @@
-var dependencies = [], tree = {info: {}, children: []}, indexList = [];
-function createDependency(depth,){
-return
-`<label class="dependency">
-	<input type="radio" name="tier$(depth)"/>
-	<div class="item">
-		<div class="icons">
-			<div class="warnings">1</div>
-			<div class="conflicts">1</div>
+var dependencies = [], tree = {}, indexList = [];
+function findInTree(){
+	
+}
+function createDependency(dependency){
+	var generated =
+	`<label class="dependency">
+		<input type="radio" name="tier${depth}"/>
+		<div class="item">
+			<div class="icons">
+				<div class="warnings">${warnings}</div>
+				<div class="conflicts">${conflicts}</div>
+			</div>
+			<div class="content ${flag}">
+				<p>${name}</p>
+				<a href="#" onclick="show(${indexes})">More info...</a>
+			</div>
 		</div>
-		<div class="content">
-			<p>Root</p>
-			<a href="#" onclick="show([0,0])">More info...</a>
-		</div>
-	</div>
-	<div class="dependencies">
-	</div>
-</label>`
+		<div class="dependencies">`;
+	for()
+		generated+=createDependency();
+	return generated+=`</div></label>`;
 }
 function generate(combine){
-	download((combine)?allinone:separate, 'generated.html','html');
+	var dependencies = "";
+	var generated = (combine)?allinone(dependencies):separate(dependencies);
+	download(generated, 'generated.html','html');
 }
 function download(data, filename, type) {
     var file = new Blob([data], {type: type});
     if (window.navigator.msSaveOrOpenBlob) // IE10+
         window.navigator.msSaveOrOpenBlob(file, filename);
     else { // Others
-        var a = document.createElement("a"),
-                url = URL.createObjectURL(file);
+        var a = document.createElement("a"), 
+			url = URL.createObjectURL(file);
         a.href = url;
         a.download = filename;
         document.body.appendChild(a);
         a.click();
         setTimeout(function() {
-            document.body.removeChild(a);
-            window.URL.revokeObjectURL(url);  
+			document.body.removeChild(a);
+			window.URL.revokeObjectURL(url);  
         }, 0); 
     }
 }
-function addChild(indexes, info){
-	var currentItem = tree;
-	for(var index = 0; index < indexes.length-1; index++)
-		currentItem = currentItem.children[indexes[index]];
-	currentItem.children.push({info:info, children:[]});
+function safeLicense(){
+	return true;
 }
 function processTree(file){
 	var lines = file.content.split('\n'),
@@ -52,8 +55,25 @@ function processTree(file){
 			cut = /[^\w]*/.exec(lines[index])[0],
 			vGAV = lines[index].replace(cut,''),
 			GAV = /[^:]*:[^:]*/.exec(vGAV),
-			info = findDependency(GAV);
-		addChild(indexes, info);
+			info = -1;
+		
+		for(var index = 0; index < dependencies.length; index++)
+			if(dependencies[index].GAV == GAV)
+				info = dependencies[index];
+		
+		var currentItem = tree;
+		for(var index = 0; index < indexes.length-1; index++){
+			if (info == -1)
+				currentItem["warnings"]++; 
+			currentItem = currentItem.children[indexes[index]];
+		}
+		
+		flag = 0;
+		if(info == -1) flag = 1;
+		if(!safeLicense) flag = 2;
+		
+		currentItem.children.push({warnings: 0, conflicts:0, flag:flag, info:info, indexes: indexes, children:[]});
+		
 		for(var popNamount = 0; popNamount < prevDepth-depth; popNamount++)
 			indexes.pop();
 		indexes[depth]++;
@@ -61,12 +81,6 @@ function processTree(file){
 		prevDepth = depth;
 	}
 	console.log(tree);
-}
-function findDependency(GAV){
-	for(var index = 0; index < dependencies.length; index++)
-		if(dependencies[index].GAV == GAV)
-			return dependencies[index];
-	return -1;
 }
 function process3rdParty(file){
 	var lines = file.content.split('\n');

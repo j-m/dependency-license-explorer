@@ -4,23 +4,69 @@ body {
 	font-family:Arial;
 }
 form{
-	width:min-content;
 	padding:1rem;
 	background:#fff;
+	width:min-content;
 }
-form *{
+label{
 	display:block;
+	white-space:nowrap;
+	text-align:right;
+	position:relative;
+}
+label .hint{
+	display:none;
+	padding:.3rem .5rem;
+	color:white;
+	background:rgb(30,30,30);
+	white-space: nowrap;
+	position:absolute;
+	top:0;
+	left:100%;
+	margin:-.3rem 0 0 1.5rem;
+}
+label .hint::before{
+	content: " ";
+	display:block;
+	
+	position:absolute;
+	top:.4rem;
+	right:100%;
+	
+	border: .4rem solid rgb(30,30,30);
+	border-top-color: transparent;
+	border-bottom-color: transparent;
+	border-left:0;
+}
+label:hover .hint{
+	display:inline;
+}
+input{
+	margin:0;
+}
+input[type="text"]{
+	padding:.3rem .5rem;
+}
+input[type="submit"]{
 	width:100%;
 }
-form input{
+fieldset{
 	margin-bottom:1rem;
-	padding:.5rem 0;
 }
-form input:requried::before{
+fieldset:nth-child(1){
+	border: .2rem dashed #c1e0ff;
+	padding:1rem;
+	box-sizing: content-box;
+}
+fieldset:nth-child(1) label{
+	cursor: pointer
+}
+fieldset:nth-child(1) p{
+	margin:0;
+	text-align:right;
+	white-space: nowrap;
+}
+fieldset:nth-child(1) p[required]::before{
 	content:"*";
 	color:red;
-}
-form input[type="submit"]{
-	min-width:20rem;
-	margin-bottom:0;
 }
