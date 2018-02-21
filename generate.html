@@ -21,23 +21,23 @@
 				<legend>File customisation</legend>
 				<label>
 					Create all-in-one document 
-					<input type="radio" name="generation" checked/>
+					<input type="radio" name="generation" value="0" checked/>
 					<p class="hint">Makes the document more portable; no external dependencies</p>
 				</label>
 				<label>
 					Create dependent document 
-					<input type="radio" name="generation"/>
-					<p class="hint">Move the generated file(s) into the `output` folder</p>
+					<input type="radio" name="generation" value="1"/>
+					<p class="hint">Manually move the generated file(s) into the `output` folder</p>
 				</label>
 				<label>
 					Create HTML/CSS only document 
-					<input type="radio" name="generation"/>
+					<input type="radio" name="generation" value="2"/>
 					<p class="hint">Tree exploration only; cannot edit or view details</p>
 				</label>
 				<label>
-					Re-name
-					<input type="text" name="name" placeholder="generated"/>
-					<p class="hint">Customise download name</p>
+					File name(s)
+					<input type="text" id="name" name="name" placeholder="generated"/>
+					<p class="hint">Customise download name(s)</p>
 				</label>
 			</fieldset>
 			<fieldset>
@@ -46,11 +46,6 @@
 					Log output to file 
 					<input type="checkbox" id="log" name="log"/>
 					<p class="hint">Output is logged to console anyway</p>
-				</label>
-				<label>
-					Save JSON
-					<input type="checkbox" id="log" name="log" checked/>
-					<p class="hint">Required for detail viewing & modification if not all-in-one</p>
 				</label>
 			</fieldset>
 			<input type="submit" value="Generate"/>
