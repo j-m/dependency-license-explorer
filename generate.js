@@ -1,19 +1,19 @@
-var dependencies = [], whitelisted = [], tree = {}, indexList = [];
+var dependencies = [], whitelisted = [], tree = {};
 function createDependency(dependency, mode){
 	var generated = '<label class="dependency">\n';
-	if(dependency.children.length > 0) generated += '<input type="radio" name="tier'+dependency.depth+'"/>\n';
-	generated += '<div class="item">\n<div class="icons">\n';
-	if(dependency.warnings > 0) generated += '<div class="warnings">'+dependency.warnings+'</div>\n';
-	if(dependency.conflicts > 0) generated += '<div class="conflicts">'+dependency.conflicts+'</div>\n';
-	generated += '</div>\n<div class="content '+dependency.flag+'">\n';
-	generated += '<p>'+dependency.name+'</p>\n';
-	if(mode != 2) generated += '<a href="#" onclick="show('+dependency.indexes+')">More info...</a>\n';
-	generated += '</div>\n</div>\n';
+	if(dependency.children.length > 0) generated += '\t<input type="radio" name="tier'+dependency.index.length+'"/>\n';
+	generated += '\t<div class="item">\n\t\t<div class="icons">\n';
+	if(dependency.warnings > 0) generated += '\t\t\t<div class="warnings">'+dependency.warnings+'</div>\n';
+	if(dependency.conflicts > 0) generated += '\t\t\t<div class="conflicts">'+dependency.conflicts+'</div>\n';
+	generated += '\t</div>\n\t\t<div class="content '+dependency.flag+'">\n';
+	generated += '\t\t\t<p>'+dependency.name+'</p>\n';
+	if(mode != 2) generated += '\t\t\t<a href="#" onclick="show(['+dependency.index+'])">More info...</a>\n';
+	generated += '\t\t</div>\n\t</div>\n';
 	if(dependency.children.length > 0){
-		generated += '<div class="dependencies">\n';
+		generated += '\t<div class="dependencies">\n';
 		for(var index = 0; index < dependency.children.length; index++)
 			generated+=createDependency(dependency.children[index], mode);
-		generated+='</div>\n';
+		generated+='\t</div>\n';
 	}
 	generated+='</label>\n';
 	return generated;
@@ -22,21 +22,15 @@ function generate(mode, name){
 	var generated = createDependency(tree.children[0], mode);
 	switch(mode){
 		case "0": 
-		console.log("test");
 			generated = allinone(generated);
-			console.log("test");
-			console.log(generated);
 			break;
 		case "1": 
 			generated = separate(generated);
-			console.log(generated);
 			break;
 		case "2": 
 			generated = htmlcss(generated);
-			console.log(generated);
 			break;
 	}
-	
 	download(generated, name+'.html','html');
 }
 function download(data, filename, type) {
@@ -74,16 +68,13 @@ function processTree(file){
 			info = -1,
 			flag = "";
 		
-		for(var index = 0; index < dependencies.length; index++){
-			console.log(dependencies[index].GAV,"vs",GAV)
+		for(var index = 0; index < dependencies.length; index++)
 			if(dependencies[index].GAV == GAV)
 				info = dependencies[index];
-		}
 		
 		if(info == -1) flag = "missing";
 		else if(!safeLicense(info.license)) flag = "conflict";
-		
-		console.log(indexes);
+				
 		var currentItem = tree;
 		for(var index = 0; index < indexes.length - 1; index++){
 			if (flag == "missing") currentItem["warnings"]++; 
@@ -92,7 +83,7 @@ function processTree(file){
 		}
 		if (flag == "missing") currentItem["warnings"]++; 
 		if (flag == "conflict") currentItem["conflicts"]++; 		
-		if (currentItem.children) currentItem.children.push({warnings: 0, conflicts:0, flag:flag, license:info.license, name:info.name||GAV, GAV:info.GAV, depth: depth, children:[]});
+		if (currentItem.children) currentItem.children.push({warnings: 0, conflicts:0, flag:flag, license:info.license, name:info.name||GAV, GAV:info.GAV, index:indexes.slice(), children:[]});
 		else tree =  {warnings: 0, conflicts:0, flag:flag, license:info.license, name:info.name, GAV:info.GAV, depth: depth, children:[]};
 		
 		for(var popNamount = 0; popNamount < prevDepth-depth; popNamount++)
@@ -102,7 +93,7 @@ function processTree(file){
 		
 		prevDepth = depth;
 	}
-	console.log("INFO: Tree structure");
+	console.log("INFO: JSON data");
 	console.log(tree);
 }
 function process3rdParty(file){
@@ -167,8 +158,9 @@ function read(e){
 		reader.name = group[index].name; /*Hackish but works*/
 		reader.onload = function(e2) {
 			files.push({name:this.name,content:e2.currentTarget.result});
-			if(files.length >= 2)
+			if(files.length >= 2 && index==group.length){
 				process(files,mode,name);
+			}
 		};
 		reader.readAsText(group[index]);
 	}

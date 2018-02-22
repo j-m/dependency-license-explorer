@@ -82,6 +82,7 @@ function allinone(dependencies){return `
 		}
 		/*Content styling*/
 		.content{
+			display:inline-block;
 			position:relative;
 			z-index:2;
 			background:#aaa;
@@ -98,47 +99,55 @@ function allinone(dependencies){return `
 				background: #ddd;
 				cursor:pointer;
 			}
-			/*white up ones with sub modules*/
-			input + .item .content:not(.missing):not(.conflict){	
+			/*Highlight conflicting licenses*/
+			.content.conflict{
+				background:#c79300;
+				border-bottom-color:#946d02;
+				color:white;
+			}
+			/*Highlight missing licenses*/
+			.content.missing{
+				background:#dfa503;
+				border-bottom-color:#c59100;
+				color:white;
+			}
+			/*lighten ones with sub modules*/
+			input + .item .content{	
 				background:#fff;
 				border-bottom:.2rem solid #eaeaea;
+			}
+			input + .item .content.conflict{	
+				background:#red;
+				border-bottom:.2rem solid #c80000;
+			}
+			input + .item .content.missing{	
+				background:#ffbc00;
+				border-bottom:.2rem solid #dfa503;
 			}
 			/*Stylise text*/
 			.content * {
 				overflow: hidden;
 				white-space: nowrap;
 				text-overflow: ellipsis;
-				max-width:10rem;
+				max-width:15rem;
 				margin:0;
 			}
-			.content *:nth-child(1){
+			.content p{
 				font-size:1rem;
 				font-weight:bold;
 			}
-			.content *:nth-child(2){
+			.content a{
 				font-size:.8rem;
 				text-decoration:none;
 			}
-			.content *:nth-child(2):active{
-				color:black;
+			.content a:link{
+				color:blue;
 			}
-			.content *:nth-child(2):hover{
+			.content a:hover{
 				text-decoration:underline;
 				cursor:pointer;
 			}
-			/*Highlight conflicting licenses*/
-			.content.conflict{
-				background:red;
-				border-bottom-color:#c80000;
-				color:white;
-			}
-			
-			/*Highlight missing licenses*/
-			.content.missing{
-				background:#ffbc00;
-				border-bottom-color:#dfa503;
-				color:white;
-			}
+
 		/*Add horizontal*/
 		.item{
 			position:relative;
@@ -170,22 +179,25 @@ function allinone(dependencies){return `
 			bottom: 50%;
 			z-index:2;
 		}
-		.dependency:not(:last-child)::before{
+		.dependency::before{
 			content: " ";
 			display: block;
 			height: 6rem;
 			position: absolute;
 			left: 0;
-			margin-top: 3rem;
 			z-index: 2;
 			width: 2px;
+			margin-top: -3rem;
+			background: #eee;			
+		}
+		.dependency:not(:first-child)::before{
 			background: #aaa;
 		}
 		/*icons*/
 		.icons{
 			position:absolute;
 			z-index:3;
-			right:2.1rem;
+			top:0;
 		}
 		.icons *{display:inline;}
 		/*.warnings*/
@@ -295,10 +307,30 @@ function htmlcss(dependencies){return `
 				background: #ddd;
 				cursor:pointer;
 			}
-			/*white up ones with sub modules*/
-			input + .item .content:not(.missing):not(.conflict){	
+			/*Highlight conflicting licenses*/
+			.content.conflict{
+				background:#c79300;
+				border-bottom-color:#946d02;
+				color:white;
+			}
+			/*Highlight missing licenses*/
+			.content.missing{
+				background:#dfa503;
+				border-bottom-color:#c59100;
+				color:white;
+			}
+			/*lighten ones with sub modules*/
+			input + .item .content{	
 				background:#fff;
 				border-bottom:.2rem solid #eaeaea;
+			}
+			input + .item .content.conflict{	
+				background:#red;
+				border-bottom:.2rem solid #c80000;
+			}
+			input + .item .content.missing{	
+				background:#ffbc00;
+				border-bottom:.2rem solid #dfa503;
 			}
 			/*Stylise text*/
 			.content * {
@@ -311,19 +343,6 @@ function htmlcss(dependencies){return `
 			.content *:nth-child(1){
 				font-size:1rem;
 				font-weight:bold;
-			}
-			/*Highlight conflicting licenses*/
-			.conflict{
-				background:red;
-				border-bottom-color:#c80000;
-				color:white;
-			}
-			
-			/*Highlight missing licenses*/
-			.missing{
-				background:#ffbc00;
-				border-bottom-color:#dfa503;
-				color:white;
 			}
 		/*Add horizontal*/
 		.item{
@@ -356,15 +375,18 @@ function htmlcss(dependencies){return `
 			bottom: 50%;
 			z-index:2;
 		}
-		.dependency:not(:last-child)::before{
+		.dependency::before{
 			content: " ";
 			display: block;
 			height: 6rem;
 			position: absolute;
 			left: 0;
-			margin-top: 3rem;
 			z-index: 2;
 			width: 2px;
+			margin-top: -3rem;
+			background: #eee;			
+		}
+		.dependency:not(:first-child)::before{
 			background: #aaa;
 		}
 		/*icons*/
