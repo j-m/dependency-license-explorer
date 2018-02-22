@@ -1,4 +1,4 @@
-var dependencies = [], whitelisted = [], tree = {warnings: 0, conflicts:0, indexes:[], children:[]}, indexList = [];
+var dependencies = [], whitelisted = [], tree = {}, indexList = [];
 function createDependency(dependency, mode){
 	var generated = '<label class="dependency">\n';
 	if(dependency.children.length > 0) generated += '<input type="radio" name="tier'+dependency.depth+'"/>\n';
@@ -19,9 +19,7 @@ function createDependency(dependency, mode){
 	return generated;
 }
 function generate(mode, name){
-	var generated = createDependency(tree, mode);
-	console.log(mode==0);
-	console.log(mode===0);
+	var generated = createDependency(tree.children[0], mode);
 	switch(mode){
 		case "0": 
 		console.log("test");
@@ -72,13 +70,15 @@ function processTree(file){
 	var indexes = [], prevDepth = 0;
 	for(var lineIndex = 0; lineIndex < lines.length; lineIndex++){
 		var depth = (/[^\w]*/.exec(lines[lineIndex])[0].length)/3,
-			GAV = /[^:]*:[^:]*/.exec(lines[lineIndex].replace(/[^\w]*/.exec(lines[lineIndex])[0],'')),
+			GAV = /[^:]*:[^:]*/.exec(lines[lineIndex].replace(/[^\w]*/.exec(lines[lineIndex])[0],''))[0],
 			info = -1,
 			flag = "";
 		
-		for(var index = 0; index < dependencies.length; index++)
+		for(var index = 0; index < dependencies.length; index++){
+			console.log(dependencies[index].GAV,"vs",GAV)
 			if(dependencies[index].GAV == GAV)
 				info = dependencies[index];
+		}
 		
 		if(info == -1) flag = "missing";
 		else if(!safeLicense(info.license)) flag = "conflict";
@@ -92,7 +92,8 @@ function processTree(file){
 		}
 		if (flag == "missing") currentItem["warnings"]++; 
 		if (flag == "conflict") currentItem["conflicts"]++; 		
-		currentItem.children.push({warnings: 0, conflicts:0, flag:flag, license:info.license, name:info.name, GAV:info.GAV, depth: depth, children:[]});
+		if (currentItem.children) currentItem.children.push({warnings: 0, conflicts:0, flag:flag, license:info.license, name:info.name||GAV, GAV:info.GAV, depth: depth, children:[]});
+		else tree =  {warnings: 0, conflicts:0, flag:flag, license:info.license, name:info.name, GAV:info.GAV, depth: depth, children:[]};
 		
 		for(var popNamount = 0; popNamount < prevDepth-depth; popNamount++)
 			indexes.pop();
@@ -107,9 +108,12 @@ function processTree(file){
 function process3rdParty(file){
 	var lines = file.content.split('\n');
 	for(var index = 0; index < lines.length; index++){
-		var components = lines[index].split(/[()]/);
+		var components = lines[index].split(/[()]/),
+			GAV = components[components.length-2];
+		if(GAV)
+			GAV = /[^:]*:[^:]*/.exec(GAV.replace(/[^\w]*/.exec(GAV)[0],''))[0];
 		if(components.length == 5)
-			dependencies.push({license: components[1], name:components[2].trim(), GAV:components[3] });
+			dependencies.push({license: components[1], name:components[2].trim(), GAV:GAV});
 		if(components.length < 5)
 			console.log("WARN: Line", index, "has fewer than 3 components:", lines[index])
 		if(components.length > 5){
@@ -117,7 +121,7 @@ function process3rdParty(file){
 			for(var componentIndex = 3; componentIndex < components.length - 3; componentIndex++)
 				calculatedName += "("+components[componentIndex]+")";
 			console.log("WARN: Line", index, "has more than 3 components but was added with the assumed name of:", calculatedName.trim());
-			dependencies.push({license: components[1], name:calculatedName.trim(), GAV:components[components.length-2] });
+			dependencies.push({license: components[1], name:calculatedName.trim(), GAV:GAV });
 		}
 	}
 	console.log("INFO: Module dependency information");

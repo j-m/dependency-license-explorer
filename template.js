@@ -166,7 +166,7 @@ function allinone(dependencies){return `
 			left: unset;
 			top: unset;
 			margin-bottom:-2px;
-			height: 100vh;
+			height: 1000vh; /*disgusting but works*/
 			bottom: 50%;
 			z-index:2;
 		}
@@ -352,7 +352,7 @@ function htmlcss(dependencies){return `
 			left: unset;
 			top: unset;
 			margin-bottom:-2px;
-			height: 100vh;
+			height: 1000vh; /*disgusting but works*/
 			bottom: 50%;
 			z-index:2;
 		}
