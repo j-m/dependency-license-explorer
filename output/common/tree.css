@@ -42,11 +42,32 @@ input[type="radio"]:not(:checked) ~ .dependencies{
 	.item:not(:only-child):hover,
 	input[type="radio"]:checked + .item {
 		background: #ddd;
+		cursor:pointer;
 	}
-	/*white up ones with sub modules*/
+	/*Colour conflicting licenses*/
+	.content.conflict{
+		background:#c79300;
+		border-bottom-color:#946d02;
+		color:white;
+	}
+	/*Colour missing licenses*/
+	.content.missing{
+		background:#dfa503;
+		border-bottom-color:#c59100;
+		color:white;
+	}
+	/*lighten ones with sub modules*/
 	input + .item .content{	
 		background:#fff;
 		border-bottom:.2rem solid #eaeaea;
+	}
+	input + .item .content.conflict{	
+		background:#red;
+		border-bottom:.2rem solid #c80000;
+	}
+	input + .item .content.missing{	
+		background:#ffbc00;
+		border-bottom:.2rem solid #dfa503;
 	}
 	/*Stylise text*/
 	.content * {
@@ -70,19 +91,6 @@ input[type="radio"]:not(:checked) ~ .dependencies{
 	.content *:nth-child(2):hover{
 		text-decoration:underline;
 		cursor:pointer;
-	}
-	/*Highlight conflicting licenses*/
-	.conflict{
-		background:red;
-		border-bottom-color:#c80000;
-		color:white;
-	}
-	
-	/*Highlight missing licenses*/
-	.missing{
-		background:#ffbc00;
-		border-bottom-color:#dfa503;
-		color:white;
 	}
 /*Add horizontal*/
 .item{
@@ -115,16 +123,19 @@ input[type="radio"]:checked + .item::after {
     bottom: 50%;
 	z-index:2;
 }
-.dependency:not(:last-child)::before{
+.dependency::before{
 	content: " ";
-    display: block;
-    height: 6rem;
-    position: absolute;
-    left: 0;
-    margin-top: 3rem;
-    z-index: 2;
-    width: 2px;
-    background: #aaa;
+	display: block;
+	height: 6rem;
+	position: absolute;
+	left: 0;
+	z-index: 2;
+	width: 2px;
+	margin-top: -3rem;
+	background: #eee;			
+}
+.dependency:not(:first-child)::before{
+	background: #aaa;
 }
 /*icons*/
 .icons{

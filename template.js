@@ -10,10 +10,9 @@ function allinone(dependencies){return `
 		<title>Dependency License Explorer</title>
 		<style>
 		body {
-			margin:1px;
+			margin:0;
 			background:#eee;
 			font-family:Arial;
-			height:min-content;
 		}
 		.overlay{
 			display:none;
@@ -63,7 +62,7 @@ function allinone(dependencies){return `
 			top: 0;
 			height:100%;
 		}
-		/*giving all the same width & height*/
+		/*giving all the same width*/
 		.dependency{
 			height: 6rem;
 		}
@@ -256,10 +255,9 @@ function htmlcss(dependencies){return `
 		<title>Dependency License Explorer</title>
 		<style>
 		body {
-			margin:1px;
+			margin:0;
 			background:#eee;
 			font-family:Arial;
-			height:min-content;
 		}
 		/*List content vertically,*/
 		.dependencies {
@@ -272,7 +270,7 @@ function htmlcss(dependencies){return `
 			top: 0;
 			height:100%;
 		}
-		/*giving all the same width & height*/
+		/*giving all the same height*/
 		.dependency{
 			height: 6rem;
 		}
@@ -291,8 +289,10 @@ function htmlcss(dependencies){return `
 		}
 		/*Content styling*/
 		.content{
+			display:inline-block;
 			position:relative;
 			z-index:2;
+			height: 2rem;
 			background:#aaa;
 			padding:1.2rem 2rem .5rem 2rem;
 			border-bottom:.2rem solid #999;
@@ -337,13 +337,25 @@ function htmlcss(dependencies){return `
 				overflow: hidden;
 				white-space: nowrap;
 				text-overflow: ellipsis;
-				max-width:10rem;
+				max-width:15rem;
 				margin:0;
 			}
-			.content *:nth-child(1){
+			.content p{
 				font-size:1rem;
 				font-weight:bold;
 			}
+			.content a{
+				font-size:.8rem;
+				text-decoration:none;
+			}
+			.content a:link{
+				color:blue;
+			}
+			.content a:hover{
+				text-decoration:underline;
+				cursor:pointer;
+			}
+
 		/*Add horizontal*/
 		.item{
 			position:relative;
@@ -393,7 +405,7 @@ function htmlcss(dependencies){return `
 		.icons{
 			position:absolute;
 			z-index:3;
-			right:2.1rem;
+			top:0;
 		}
 		.icons *{display:inline;}
 		/*.warnings*/
