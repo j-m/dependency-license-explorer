@@ -8,12 +8,14 @@ Generated display is HTML/CSS only; any **modern** browser will support this - w
 
 - [x] HTML/CSS only tree-structure view
 - [x] Warning (missing license) and error (blacklisted license) paths
+- [x] Generate `HTML` from `JSON`
+- [ ] Export `JSON` data
 - [ ] Display/edit dependency details
-- [ ] Export data (`JSON`)
-- [ ] Generate `HTML` from `JSON`
 - [ ] Allow overwriting of module licenses
 - [ ] Allow aliases/synonyms of licenses
 - [ ] Whitelist/blacklist license customisation
 - [ ] Project overview/summary
+- [ ] Directory scan; automate file loading
+- [ ] Hot loading
 
 If you just want to use this software please use the `releases` tab above and download the latest stable build, do not clone or fork this repo.
