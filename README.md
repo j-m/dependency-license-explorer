@@ -8,7 +8,8 @@ Generated display is HTML/CSS only; any **modern** browser will support this - w
 **No 3rd party assets** have been, or will be, used.
 
 - [x] HTML/CSS only tree-structure view
-- [x] Warning (missing license) and error (blacklisted license) paths
+- [x] Warning (missing license) paths
+- [ ] Error (blacklisted license) paths
 - [x] Generate `HTML` from `JSON`
 - [ ] Export `JSON` data
 - [ ] Display/edit dependency details
@@ -19,4 +20,4 @@ Generated display is HTML/CSS only; any **modern** browser will support this - w
 - [ ] Directory scan; automate file loading
 - [ ] Hot loading
 
-If you just want to use this software please use the `releases` tab above and download the latest stable build, do not clone or fork this repo.
+If you just want to use this software please use the `releases` tab above and download the latest version, do not clone or fork this repo - it's not exactly... stable.
