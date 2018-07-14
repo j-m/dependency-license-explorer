@@ -1,0 +1,84 @@
+body {
+	margin:0;
+	background:#eee;
+	font-family:Arial;
+	height:min-content;
+}
+#overlay{
+	display:none;
+	position:absolute;
+	z-index:99;
+	background:rgba(0,0,0,0.7);
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+}
+.popup{
+	background:#fafafa;
+	border:1px solid #eee;
+	box-shadow:0 .4rem 1rem rgba(0,0,0,0.2);
+	border-radius:4px;
+	padding:1rem 2rem;
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+	resize: both;
+    overflow: auto;
+	min-width:10rem;
+	min-height:min-content;
+}
+.popup *{
+	display:block;
+	margin: .5rem 0;
+	width:100%;
+	box-sizing: border-box;
+}
+.popup input[type="text"]{
+	position:relative;
+	z-index:3;
+	padding: .5rem 1rem;
+	background: #efefef;
+    border: 2px inset;
+}
+.popup button{
+	color:white;
+}
+#location, #branch{
+    background: linear-gradient(to bottom, #E0E0E0, #FFF);
+	box-shadow:0 0 .3rem rgba(0,0,0,0.1);
+    padding: 0.5rem;
+	text-shadow: 1px 1px white, -1px -1px #E4E4E4;
+	position:fixed;
+	width:100vw;
+}
+#location > *, #branch > p{
+	display:inline-block;
+	vertical-align: middle;
+	margin:0;
+}
+#location{
+	top:0;
+	border-bottom: 1px solid #B7B7B7;
+}
+#branch{
+	bottom:0;
+	border-top: 1px solid #B7B7B7;
+}
+#branch > p:hover{
+	text-decoration:underline;
+	cursor: pointer;
+}
+#branch > p:not(:last-child)::after{
+	content:" ";
+	display:block;
+	
+	border: solid black;
+    border-width: 0 1px 1px 0;
+    display: inline-block;
+    padding: 3px;
+	margin:2px;
+	
+	transform: rotate(-45deg);
+}

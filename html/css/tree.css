@@ -62,7 +62,7 @@ input[type="radio"]:not(:checked) ~ .dependencies{
 		border-bottom:.2rem solid #eaeaea;
 	}
 	input + .item .content.conflict{	
-		background:#red;
+		background: red;
 		border-bottom:.2rem solid #c80000;
 	}
 	input + .item .content.missing{	

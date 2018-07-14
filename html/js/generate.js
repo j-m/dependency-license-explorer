@@ -1,4 +1,4 @@
-var dependencies = [], whitelisted = [], tree = {};
+var dependencies = [], whitelist = [], blacklist = [], tree = {};
 function createDependency(dependency, mode){
 	var generated = '<label class="dependency">\n';
 	if(dependency.children.length > 0) generated += '\t<input type="radio" name="tier'+dependency.index.length+'"/>\n';
@@ -51,12 +51,13 @@ function download(data, filename, type) {
     }
 }
 function safeLicense(license){
-	if(whitelisted.length == 0)
-		return true;
-	for(var index = 0; index < whitelisted.length; index++)
-		if(whitelisted[index] == license)
+	for(var index = 0; index < whitelist.length; index++)
+		if ((new RegExp(whitelist[index])).test(license))
 			return true;
-	return false;
+	for(var index = 0; index < blacklist.length; index++)
+		if ((new RegExp(blacklist[index])).test(license))
+			return false;
+	return true;
 }
 function processTree(file){
 	var lines = file.content.split('\n'),

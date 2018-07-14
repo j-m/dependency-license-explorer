@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="description" content="Dependency License Explorer">
+		<meta name="keywords" content="HTML,CSS,JavaScript,License,Dependency">
+		<meta name="author" content="Jonathan Marsh, Charlie Parker">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Dependency License Explorer</title>
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<link rel="stylesheet" type="text/css" href="css/tree.css"/>
+		<script src="js/index.js"></script>
+		<script src="js/generate.js"></script>
+	</head>
+	<body>
+		<div id="location">
+			<p>C:/Blah/Blah/Blah</p>
+			<input type="button" value="Change Directory" disabled/>
+		</div>
+		<div id="tree">
+			<div id="overlay">
+				<div class="popup" id="module">
+					<label>Module name:</label>
+					<input type="text" placeholder="Name"/>
+					<label>Module package:</label>
+					<input type="text" placeholder="Package"/>
+					<label>Module license:</label>
+					<input type="text" placeholder="License"/>
+					<input type="button" value="View Whitelist"/>	
+					<input type="button" value="View Blacklist"/>	
+					<input type="submit" value="Save Changes" disabled/>
+				</div>
+				<div class="popup" id="whitelist">
+					<label>Whitelist</label>
+					<textarea></textarea>
+					<input type="submit" value="Save Changes" disabled/>
+				</div>
+				<div class="popup" id="blacklist">
+					<label>Whitelist</label>
+					<textarea></textarea>
+					<input type="submit" value="Save Changes" disabled/>
+				</div>
+			</div>
+			<div class="dependencies">
+			</div>
+		</div>
+		<div id="branch">
+			<p>com.pcmsgroup.v21</p>
+			<p>Commons DBCP</p>
+			<p>Commons Pool</p>
+		</div>
+	</body>
+</html>
