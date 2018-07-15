@@ -4,17 +4,51 @@ var projects = [],
 		dependenciesLoadedParsedAndWaiting: 1,
 		treeLoadedAndWaiting: 2,
 		bothParsedNowGenerating: 3,
-		generated: 4
+		generated: 4,
+		descriptions: [
+			"Loading...",
+			"Loaded licenses file, waiting for tree",
+			"Loaded tree file, waiting for licenses",
+			"Both files parsed. Generating...",
+			"Ready"
+		]
 	};
 function log(project, message){
 	projects[project].log.push(message);
 	console.log(project, message);
 }
 
+function showProject(project){
+	document.getElementById('projects').style.visibility = "hidden";
+	document.getElementById('root').innerHTML = projects[project].generated;
+}
+
+function newProject(project){
+	projects[project] = {dependencies: [], tree: {}, generated: "", log: []};
+	document.getElementById('projects').innerHTML += `<div class="project" id="${project}" onclick="showProject('${project}')">
+	<p class="project-name">${project}</p>
+	<p class="project-state"></p>
+	<table class="stats" border="1">
+		<tbody>
+			<tr><td class="project-dependencies"></td><td>Dependencies</td></tr>
+			<tr><td class="project-conflicts"></td><td>Conflicts</td></tr>
+			<tr><td class="project-warnings"></td><td>Warnings</td></tr>
+			<tr><td class="project-whitelisted"></td><td>Whitelisted</td></tr>
+		</tbody>
+	</table>
+</div>`;
+	setCondition(project, conditions.noneLoaded);
+}
+
 function setCondition(project, condition){
 	projects[project].condition = condition;
-	if (condition == conditions.generated && project == "examples/mavenProjectB/")
-			document.getElementById('root').innerHTML = projects[project].generated;
+	document.getElementById(project).getElementsByClassName("project-state")[0].innerHTML = conditions.descriptions[projects[project].condition];
+	if (condition == conditions.generated){
+		document.getElementById(project).getElementsByClassName("project-dependencies")[0].innerHTML = projects[project].dependencies.length;
+		document.getElementById(project).getElementsByClassName("project-conflicts")[0].innerHTML = projects[project].tree.conflicts;
+		document.getElementById(project).getElementsByClassName("project-warnings")[0].innerHTML = projects[project].tree.warnings;
+		document.getElementById(project).getElementsByClassName("project-whitelisted")[0].innerHTML = projects[project].tree.whitelisted;
+	}
 }
 
 function createDependency(dependency) {
@@ -64,7 +98,10 @@ function processTree(project) {
 				info = projects[project].dependencies[index];
 
 		if (info == -1) flag = "missing";
-		if (whitelisted(info, GAV)) flag = "";
+		if (whitelisted(info, GAV)) {
+			flag = "";
+			projects[project].tree.whitelisted++;
+		}
 		if (blacklisted(info, GAV)) flag = "conflict";
 
 		var currentItem = projects[project].tree;
@@ -89,6 +126,7 @@ function processTree(project) {
 		else projects[project].tree = {
 			warnings: 0,
 			conflicts: 0,
+			whitelisted: 0,
 			flag: flag,
 			license: info.license,
 			name: info.name,
@@ -154,7 +192,7 @@ function readFiles(){
 			reader.path = raw[index].webkitRelativePath.replace(reader.name,'');
 			reader.onload = function (event) {
 				if (!projects[this.path])
-					projects[this.path] = {condition: conditions.noneLoaded, dependencies: [], tree: {}, generated: "", log: []};
+					newProject(this.path);
 				projects[this.path][this.name] = event.currentTarget.result;
 				if (this.name == "THIRD-PARTY.txt")
 					process3rdParty(this.path);
@@ -169,7 +207,7 @@ function readFiles(){
 	}
 }
 document.getElementById('select-files').onchange = function() {
-	document.getElementById('select-files').style.visibility = "hidden";
+	document.getElementById('upload-form').style.visibility = "hidden";
 	document.getElementById('root').innerHTML = "";
 	document.getElementById('change').disabled = false;
 	readFiles();

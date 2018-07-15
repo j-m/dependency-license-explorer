@@ -53,7 +53,7 @@ body {
 	color: white;
 }
 
-#select-files{
+#select-files {
 	opacity: 0;
 	position: absolute;
 	z-index: -1;
@@ -65,8 +65,8 @@ body {
 	width: 100%;
 	max-width: 25rem;
 	max-height: 10rem;
-    border: .2rem dashed #72ccf3;
-    background: rgba(112, 203, 218, 0.08);
+	border: .2rem dashed #72ccf3;
+	background: rgba(112, 203, 218, 0.08);
 	padding: 1rem;
 	margin: 0;
 	position: absolute;
@@ -77,18 +77,18 @@ body {
 	vertical-align: middle;
 }
 
-#dropbox p{
+#dropbox p {
 	color: #6a7a7b;
 }
 
-#dropbox button{
-	padding:1rem;
-	margin-bottom:1rem;
+#dropbox button {
+	padding: 1rem;
+	margin-bottom: 1rem;
 	background-color: #8bc6ff;
-	color:white;
+	color: white;
 	border: none;
 	border-bottom: .2rem solid #6ab2f5;
-	width:15rem;
+	width: 15rem;
 	border-radius: .2rem;
 	font-size: 1.2rem;
 	font-weight: bold;
@@ -100,41 +100,39 @@ footer {
 	position: fixed;
 	z-index: 2;
 	width: 100%;
-	height:2.5rem;
+	height: 2.5rem;
 	bottom: 0;
 	border-top: 1px solid #B7B7B7;
 	box-sizing: border-box;
 	padding-left: .5rem;
 }
 
-footer > * {
+footer>* {
 	display: inline-block;
 	vertical-align: middle;
 	margin-top: 0.7rem;
 	padding: 0;
 }
 
-#copyright{
+#copyright {
 	position: absolute;
+	left:0;
 	width: 100%;
-    bottom: 100%;
-}
-
-#copyright>* {
-	color: black;
-	font-size: small;
-	text-shadow: none;
-	position: absolute;
 	bottom: 100%;
-	margin: .2rem;
+	text-align: right;
 }
 
-#copyright a {
+#copyright * {
 	color: inherit;
 	vertical-align: initial;
+	font-size: small;
+	text-shadow: none;
+	display: inline-block;
+	margin: .2rem;
+	white-space: nowrap;
 }
 
-#branch > p {
+#branch>p {
 	text-shadow: 1px 1px white, -1px -1px #E4E4E4;
 	display: inline-block;
 	vertical-align: middle;
@@ -161,18 +159,63 @@ footer > * {
 	float: right;
 	padding: 0;
 }
-#configIcons a{
+
+#configIcons a {
 	padding: .5rem;
 	border-left: 1px solid #c7c7c7;
 }
-#configIcons a:hover{
+
+#configIcons a:hover {
 	text-decoration: underline;
 }
 
-#download img{
-	width:4rem;
-	height:4rem;
+#download img {
+	width: 4rem;
+	height: 4rem;
 	position: fixed;
-	top:0;
-	right:0;
+	z-index: 2;
+	bottom: 3rem;
+	left: .5rem;
+}
+
+#projects {
+	display: flex;
+}
+
+.project {
+	position: relative;
+	z-index: 2;
+	background: #fff;
+	border-bottom: .2rem solid #eaeaea;
+	cursor: pointer;
+	padding: 0.8rem 2rem 1.5rem 2rem;
+	border-radius: .3rem;
+	white-space: nowrap;
+	text-align: center;
+	text-shadow: -1px -1px 2px rgba(0, 0, 0, 0.2);
+	margin: 1rem;
+	width: min-content;
+}
+
+.project .project-name{
+	font-size: large;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.project p {
+	margin: 0.2rem;
+}
+
+.project .stats {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.project .stats tr td:nth-child(1){
+	text-align: right;
+}
+
+.project .stats tr td:nth-child(2){
+	text-align: left;
 }
