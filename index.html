@@ -35,17 +35,25 @@
 			</div>
 		</div>
 		<input id="select-files" webkitdirectory="" directory="" multiple="" type="file">
-		<div class="dependencies">
+		<div id="root" class="dependencies">
 			
 		</div>
 		<footer>
-			<div id="copyright"><p>&copy; Copyright since 2018. <a href="license">MIT License</a></p></div>
-			<input type="button" value="Change directory" disabled/>
-			<p>com.pcmsgroup.v21</p>
-			<p>Commons DBCP</p>
-			<p>Commons Pool</p>
+			<div id="copyright"><p>&copy; Copyright since 2018 <a href="license">MIT License</a> <a href="https://github.com/j-m/Dependency-License-Explorer">Open Source</a></p></div>
+			<input id="change" type="button" value="Change directory" disabled/>
+			<div id="branch">
+				<p>com.pcmsgroup.v21</p>
+				<p>Commons DBCP</p>
+				<p>Commons Pool</p>
+			</div>
+			<div id="configIcons">
+				<p id="whitelist">Whitelist</p>
+				<p id="blacklist">Blacklist</p>
+				<p id="synonyms">Synonyms</p>
+			</div>
 		</footer>
 	</body>
 	<script src="js/index.js"></script>
+	<script src="js/config.js"></script>
 	<script src="js/generate.js"></script>
 </html>

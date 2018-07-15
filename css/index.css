@@ -1,107 +1,137 @@
 body {
-	margin:0;
-	background:#ddd;
-	font-family:Arial;
-	height:min-content;
-	min-height:100vh;
-	min-width:100vw;
-}
-#overlay{
-	display:none;
-	position:absolute;
-	z-index:99;
-	background:rgba(0,0,0,0.7);
-	top:0;
-	bottom:0;
-	left:0;
-	right:0;
-}
-.popup{
-	background:#fafafa;
-	border:1px solid #eee;
-	box-shadow:0 .4rem 1rem rgba(0,0,0,0.2);
-	border-radius:4px;
-	padding:1rem 2rem;
-	position:absolute;
-	top:50%;
-	left:50%;
-	transform:translate(-50%,-50%);
-	resize: both;
-    overflow: auto;
-	min-width:10rem;
-	min-height:min-content;
-}
-.popup *{
-	display:block;
-	margin: .5rem 0;
-	width:100%;
-	box-sizing: border-box;
-}
-.popup input[type="text"]{
-	position:relative;
-	z-index:3;
-	padding: .5rem 1rem;
-	background: #efefef;
-    border: 2px inset;
-}
-.popup button{
-	color:white;
+	margin: 0;
+	background: #eee;
+	font-family: Arial;
+	height: min-content;
+	min-height: 100vh;
+	min-width: 100vw;
 }
 
-#select-files{
-	margin:auto;
+#overlay {
+	display: none;
+	position: absolute;
+	z-index: 99;
+	background: rgba(0, 0, 0, 0.7);
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+.popup {
+	background: #fafafa;
+	border: 1px solid #eee;
+	box-shadow: 0 .4rem 1rem rgba(0, 0, 0, 0.2);
+	border-radius: 4px;
+	padding: 1rem 2rem;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	resize: both;
+	overflow: auto;
+	min-width: 10rem;
+	min-height: min-content;
+}
+
+.popup * {
+	display: block;
+	margin: .5rem 0;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.popup input[type="text"] {
+	position: relative;
+	z-index: 3;
+	padding: .5rem 1rem;
+	background: #efefef;
+	border: 2px inset;
+}
+
+.popup button {
+	color: white;
+}
+
+#select-files {
+	margin: auto;
 	width: 100%;
 	max-width: 25rem;
-	height:100%;
-	max-height:10rem;
+	height: 100%;
+	max-height: 10rem;
 	border: .5rem dashed #a0cfda;
 	border-radius: 5px;
 	padding: 1rem;
-
 	margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
-footer{
-    background: linear-gradient(to top, #E0E0E0, #FFF);
-	box-shadow:0 0 .5rem rgba(0,0,0,0.2);
-    padding: 0.5rem;
+footer {
+	background: linear-gradient(to top, #E0E0E0, #FFF);
+	box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.2);
+	padding: 0.5rem;
 	text-shadow: 1px 1px white, -1px -1px #E4E4E4;
-	position:fixed;
-	width:100vw;
-	bottom:0;
+	position: fixed;
+	z-index: 2;
+	width: 100%;
+	bottom: 0;
 	border-top: 1px solid #B7B7B7;
+	box-sizing: border-box;
 }
-#copyright > *{
+
+footer * {
 	display: inline-block;
-	color: #a6a6a6;
-	font-size:small;
+	vertical-align: middle;
+	margin: 0;
+}
+
+#copyright{
+	position: fixed;
+	width: 100%;
+    bottom: 2.5rem;
+}
+
+#copyright>* {
+	color: black;
+	font-size: small;
 	text-shadow: none;
 	position: absolute;
 	bottom: 100%;
+	margin: .2rem;
 }
-#copyright a { color: inherit; } 
-footer > p, footer > input{
-	display:inline-block;
-	vertical-align: middle;
-	margin:0;
+
+#copyright a {
+	color: inherit;
+	vertical-align: initial;
 }
-footer > p:hover{
-	text-decoration:underline;
+
+#branch>p:hover {
+	text-decoration: underline;
 	cursor: pointer;
 }
-footer > p:not(:last-child)::after{
-	content:" ";
-	display:block;
-	
+
+#branch>p:not(:last-child)::after {
+	content: " ";
+	display: block;
 	border: solid black;
-    border-width: 0 1px 1px 0;
-    display: inline-block;
-    padding: 3px;
-	margin:2px;
-	
+	border-width: 0 1px 1px 0;
+	display: inline-block;
+	padding: 3px;
+	margin: 2px;
 	transform: rotate(-45deg);
+}
+
+#configIcons {
+	float: right;
+}
+#configIcons p::before{
+	content:" ";
+	display:inline-block;
+	width:1em;
+	height:1em;
+	background: url("../img/error.svg");
+	vertical-align: text-top;
 }
