@@ -55,8 +55,8 @@ input[type="radio"]:not(:checked) ~ .dependencies{
 	}
 	/*Colour conflicting licenses*/
 	.content.conflict{
-		background:#c79300;
-		border-bottom-color:#946d02;
+		background: red;
+		border-bottom:.2rem solid #c80000;
 		color:white;
 	}
 	/*Colour missing licenses*/

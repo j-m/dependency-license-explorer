@@ -53,45 +53,71 @@ body {
 	color: white;
 }
 
-#select-files {
+#select-files{
+	opacity: 0;
+	position: absolute;
+	z-index: -1;
+}
+
+#dropbox {
+	cursor: pointer;
 	margin: auto;
 	width: 100%;
 	max-width: 25rem;
-	height: 100%;
 	max-height: 10rem;
-	border: .5rem dashed #a0cfda;
-	border-radius: 5px;
+    border: .2rem dashed #72ccf3;
+    background: rgba(112, 203, 218, 0.08);
 	padding: 1rem;
 	margin: 0;
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+	text-align: center;
+	vertical-align: middle;
+}
+
+#dropbox p{
+	color: #6a7a7b;
+}
+
+#dropbox button{
+	padding:1rem;
+	margin-bottom:1rem;
+	background-color: #8bc6ff;
+	color:white;
+	border: none;
+	border-bottom: .2rem solid #6ab2f5;
+	width:15rem;
+	border-radius: .2rem;
+	font-size: 1.2rem;
+	font-weight: bold;
 }
 
 footer {
 	background: linear-gradient(to top, #E0E0E0, #FFF);
 	box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.2);
-	padding: 0.5rem;
-	text-shadow: 1px 1px white, -1px -1px #E4E4E4;
 	position: fixed;
 	z-index: 2;
 	width: 100%;
+	height:2.5rem;
 	bottom: 0;
 	border-top: 1px solid #B7B7B7;
 	box-sizing: border-box;
+	padding-left: .5rem;
 }
 
-footer * {
+footer > * {
 	display: inline-block;
 	vertical-align: middle;
-	margin: 0;
+	margin-top: 0.7rem;
+	padding: 0;
 }
 
 #copyright{
-	position: fixed;
+	position: absolute;
 	width: 100%;
-    bottom: 2.5rem;
+    bottom: 100%;
 }
 
 #copyright>* {
@@ -106,6 +132,13 @@ footer * {
 #copyright a {
 	color: inherit;
 	vertical-align: initial;
+}
+
+#branch > p {
+	text-shadow: 1px 1px white, -1px -1px #E4E4E4;
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0;
 }
 
 #branch>p:hover {
@@ -126,12 +159,20 @@ footer * {
 
 #configIcons {
 	float: right;
+	padding: 0;
 }
-#configIcons p::before{
-	content:" ";
-	display:inline-block;
-	width:1em;
-	height:1em;
-	background: url("../img/error.svg");
-	vertical-align: text-top;
+#configIcons a{
+	padding: .5rem;
+	border-left: 1px solid #c7c7c7;
+}
+#configIcons a:hover{
+	text-decoration: underline;
+}
+
+#download img{
+	width:4rem;
+	height:4rem;
+	position: fixed;
+	top:0;
+	right:0;
 }

@@ -1,0 +1,3 @@
+var blacklist = [
+    "Unknown license"
+];

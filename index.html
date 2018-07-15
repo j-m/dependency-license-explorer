@@ -1,59 +1,77 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="description" content="Dependency License Explorer">
-		<meta name="keywords" content="HTML,CSS,JavaScript,License,Dependency">
-		<meta name="author" content="Jonathan Marsh, Charlie Parker">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Dependency License Explorer</title>
-		<link rel="stylesheet" type="text/css" href="css/index.css"/>
-		<link rel="stylesheet" type="text/css" href="css/tree.css"/>
-	</head>
-	<body>
-		<div id="overlay">
-			<div class="popup" id="module">
-				<label>Module name:</label>
-				<input type="text" placeholder="Name"/>
-				<label>Module package:</label>
-				<input type="text" placeholder="Package"/>
-				<label>Module license:</label>
-				<input type="text" placeholder="License"/>
-				<input type="button" value="View Whitelist"/>	
-				<input type="button" value="View Blacklist"/>	
-				<input type="submit" value="Save Changes" disabled/>
-			</div>
-			<div class="popup" id="whitelist">
-				<label>Whitelist</label>
-				<textarea></textarea>
-				<input type="submit" value="Save Changes" disabled/>
-			</div>
-			<div class="popup" id="blacklist">
-				<label>Blacklist</label>
-				<textarea></textarea>
-				<input type="submit" value="Save Changes" disabled/>
-			</div>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="Dependency License Explorer">
+	<meta name="keywords" content="HTML,CSS,JavaScript,License,Dependency">
+	<meta name="author" content="Jonathan Marsh, Charlie Parker">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Dependency License Explorer</title>
+	<link rel="stylesheet" type="text/css" href="css/index.css" />
+	<link rel="stylesheet" type="text/css" href="css/tree.css" />
+</head>
+
+<body>
+	<div id="overlay">
+		<div class="popup" id="module">
+			<label>Module name:</label>
+			<input type="text" placeholder="Name" />
+			<label>Module package:</label>
+			<input type="text" placeholder="Package" />
+			<label>Module license:</label>
+			<input type="text" placeholder="License" />
+			<input type="button" value="View Whitelist" />
+			<input type="button" value="View Blacklist" />
+			<input type="submit" value="Save Changes" disabled/>
 		</div>
-		<input id="select-files" webkitdirectory="" directory="" multiple="" type="file">
-		<div id="root" class="dependencies">
-			
+		<div class="popup" id="whitelist">
+			<label>Whitelist</label>
+			<textarea></textarea>
+			<input type="submit" value="Save Changes" disabled/>
 		</div>
-		<footer>
-			<div id="copyright"><p>&copy; Copyright since 2018 <a href="license">MIT License</a> <a href="https://github.com/j-m/Dependency-License-Explorer">Open Source</a></p></div>
-			<input id="change" type="button" value="Change directory" disabled/>
-			<div id="branch">
-				<p>com.pcmsgroup.v21</p>
-				<p>Commons DBCP</p>
-				<p>Commons Pool</p>
-			</div>
-			<div id="configIcons">
-				<p id="whitelist">Whitelist</p>
-				<p id="blacklist">Blacklist</p>
-				<p id="synonyms">Synonyms</p>
-			</div>
-		</footer>
-	</body>
-	<script src="js/index.js"></script>
-	<script src="js/config.js"></script>
-	<script src="js/generate.js"></script>
+		<div class="popup" id="blacklist">
+			<label>Blacklist</label>
+			<textarea></textarea>
+			<input type="submit" value="Save Changes" disabled/>
+		</div>
+	</div>
+	<label id="dropbox" for="select-files">
+		<p>Drop folder here</p>
+		<p>or</p>
+		<button>Browse</button>
+	</label>
+	<input id="select-files" name="select-files" webkitdirectory="" directory="" multiple="" type="file">
+	<div id="root" class="dependencies">
+
+	</div>
+	<a id="download">
+		<img src="img/download.svg" />
+	</a>
+	<footer>
+		<div id="copyright">
+			<p>&copy; Copyright since 2018
+				<a href="license">MIT License</a>
+				<a href="https://github.com/j-m/Dependency-License-Explorer">Open Source</a>
+			</p>
+		</div>
+		<input id="change" type="button" value="Change directory" disabled/>
+		<div id="branch">
+			<p>com.pcmsgroup.v21</p>
+			<p>Commons DBCP</p>
+			<p>Commons Pool</p>
+		</div>
+		<div id="configIcons">
+			<a id="whitelist">Whitelist</a>
+			<a id="blacklist">Blacklist</a>
+			<a id="synonyms">Synonyms</a>
+		</div>
+	</footer>
+</body>
+<script src="js/index.js"></script>
+<script src="config/whitelist.js"></script>
+<script src="config/blacklist.js"></script>
+<script src="config/synonyms.js"></script>
+<script src="js/generate.js"></script>
+
 </html>

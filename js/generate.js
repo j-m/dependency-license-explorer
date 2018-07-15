@@ -6,7 +6,6 @@ var projects = [],
 		bothParsedNowGenerating: 3,
 		generated: 4
 	};
-
 function log(project, message){
 	projects[project].log.push(message);
 	console.log(project, message);
