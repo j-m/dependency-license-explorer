@@ -3,8 +3,6 @@ body {
 	background: #eee;
 	font-family: Arial;
 	height: min-content;
-	min-height: 100vh;
-	min-width: 100vw;
 }
 
 #overlay {
@@ -81,9 +79,9 @@ body {
 	color: #6a7a7b;
 }
 
-#dropbox button {
+#dropbox .button {
 	padding: 1rem;
-	margin-bottom: 1rem;
+	margin: 1rem auto;
 	background-color: #8bc6ff;
 	color: white;
 	border: none;
@@ -167,6 +165,10 @@ footer>* {
 
 #configIcons a:hover {
 	text-decoration: underline;
+}
+
+#download{
+	visibility: hidden;
 }
 
 #download img {

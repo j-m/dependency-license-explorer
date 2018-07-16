@@ -18,11 +18,6 @@ function log(project, message){
 	console.log(project, message);
 }
 
-function showProject(project){
-	document.getElementById('projects').style.visibility = "hidden";
-	document.getElementById('root').innerHTML = projects[project].generated;
-}
-
 function newProject(project){
 	projects[project] = {dependencies: [], tree: {}, generated: "", log: []};
 	document.getElementById('projects').innerHTML += `<div class="project" id="${project}" onclick="showProject('${project}')">
@@ -142,15 +137,12 @@ function processTree(project) {
 
 		prevDepth = depth;
 	}
-	console.log("INFO: JSON data");
-	console.log(projects[project].tree);
 	setCondition(project, conditions.bothParsedNowGenerating);
 	projects[project].generated = createDependency(projects[project].tree.children[0]);
 	setCondition(project, conditions.generated);
 }
 
 function process3rdParty(project) {
-	console.log("Processing", project+"THIRD-PARTY.txt");
 	var lines = projects[project]["THIRD-PARTY.txt"].split('\n');
 	for (var index = 0; index < lines.length; index++) {
 		var components = lines[index].split(/[()]/),
@@ -172,17 +164,12 @@ function process3rdParty(project) {
 			GAV: GAV
 		});
 	}
-	console.log("INFO: Module dependency information");
-	console.log(projects[project].dependencies);
 	if (projects[project].condition == conditions.treeLoadedAndWaiting)
 		processTree(project);
 	setCondition(project, conditions.dependenciesLoadedParsedAndWaiting);
 }
 
-function readFiles(){
-	var raw = document.getElementById('select-files').files;
-	console.log("Raw input:");
-	console.log(raw);
+function readFiles(raw){
 	var reading = 0;
 	for (var index = 0; index < raw.length; index++) {
 		if (raw[index].name == "THIRD-PARTY.txt" || raw[index].name == "tree.txt"){
@@ -206,9 +193,3 @@ function readFiles(){
 		}
 	}
 }
-document.getElementById('select-files').onchange = function() {
-	document.getElementById('upload-form').style.visibility = "hidden";
-	document.getElementById('root').innerHTML = "";
-	document.getElementById('change').disabled = false;
-	readFiles();
-};
