@@ -10,8 +10,8 @@ Generated display is HTML/CSS only; any **modern** browser will support this - w
 - [x] HTML/CSS only tree-structure view
 - [x] Warning (missing license) paths
 - [x] Error (blacklisted license) paths
-- [x] Generate `HTML` from `JSON`
-- [x] Export `JSON` data
+- [ ] Generate `HTML` from `JSON`
+- [ ] <s>Export `JSON` data</s> <sub><b>Won't do</b></sub>
 - [x] Display<s>/edit</s> dependency details
 - [x] Allow overwriting of module licenses
 - [x] Allow aliases/synonyms of licenses
@@ -22,4 +22,4 @@ Generated display is HTML/CSS only; any **modern** browser will support this - w
 
 Editing and hot loading cannot be done due to the restraints with the `file` protocol. A version that runs on a server is being developed, and this will be capable of editting files and listening to changes.  
 
-<sub><sup>If you just want to use this software please use the `releases` tab above and download the latest version, do not clone or fork this repo</sup></sub>
+<sub><sup>If you just want to use this software please use the `releases` tab above and download the latest version, do not clone or fork this repository.</sup></sub>
